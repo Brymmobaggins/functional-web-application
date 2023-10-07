@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Login & Registration</title>
+  </head>
+  <body>
+    <hanko-auth />
+
+  <script type="module">
+    import { register } from "https://esm.run/@teamhanko/hanko-elements";
+
+    const { hanko } = await register(process.env.HANKO_API_URL);
+
+    hanko.onAuthFlowCompleted(() => {
+      // successfully logged in, redirect to a page in your application
+      document.location.href = "...";
+    });
+  </script>
+    <main>
+      <div class="container">
+        <div class="form-container">
+          <!-- login -->
+          <form id="login-form">
+            <h2>Login</h2>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required />
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required />
+            <button type="submit">Login</button>
+          </form>
+
+        </div>
+      </div>
+    </main>
+    <script src="app.js"></script>
+  </body>
+</html>
